@@ -1,0 +1,115 @@
+
+*{
+	box-sizing: border-box;
+}
+
+.art_body {
+	background: #76CFCF;
+	background: -webkit-linear-gradient(top left, #046F6F, #76CFCF);
+	background: -o-linear-gradient(top left, #046F6F, #76CFCF);
+	background: -moz-linear-gradient(top left, #046F6F, #76CFCF);
+	min-width: 500px;
+	position:relative;
+	z-index:-1;
+}
+.art_window_inner{
+	background-color:aliceblue;
+}
+
+.button_bar{
+	width:850px;
+	position:absolute;
+	top:350px;
+	left:0px;
+}
+
+.button_bar button{
+	height:110px;
+	width:109px;
+	padding:0px;
+	border-style:none;
+	background-color:transparent;
+}
+
+.button_bar button:hover{
+	
+}
+.button_bar button:hover i{
+	color:#87ced0;
+	animation: enlarge_font 2s infinite;
+}
+.button_bar button:focus{
+	outline:none;
+}
+
+.button_bar button i{
+	font-size:60pt;
+	font-style:normal;
+	font-family:cursive;
+	color:white;
+	line-height:100px;
+	
+}
+
+button#previous{
+}
+
+button#play, button#pause {
+	margin-left:257px;
+	margin-right:257px;
+}
+
+.button_bar button#play i, .button_bar button#pause i{
+	color:transparent;
+}
+
+.button_bar button#play:hover i, .button_bar button#pause:hover i{
+	color:#87ced0;
+}
+
+button#pause{
+	display:none;
+}
+
+button#next{
+	
+}
+
+
+div.art-window {
+	margin: auto;
+	width: 850px;
+	background-color: black;
+	padding:75px;
+	margin-top:15px;
+	padding-bottom:30px;
+	position:relative;
+	z-index:-1;
+}
+
+img{
+	height: 100%;
+	width:100%;
+	max-height: 650px;
+	max-width: 100%;
+}
+p#title {
+  font-size: 12pt;
+  font-weight: bold;
+  color: white;
+}
+
+@keyframes font_enlarge {
+	from {font-size:65pt;}
+	to {font-size:75pt;}
+}
+
+
+
+
+
+
+
+
+
+

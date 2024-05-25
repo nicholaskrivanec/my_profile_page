@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head is="nk-head" id="chess">
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+		<script src="../js/main.js"></script>
+	</head>
+	<body>
+		<menu-bar></menu-bar>
+		<left-menu-bar></left-menu-bar>
+	
+		<div id="nk-main" ng-app="nkMain">
+			<div id="top_area" class="offboard top">
+
+			</div>
+			
+			<div id="left_area" class="offboard left">
+				
+			</div>
+			
+			<chess-board id="main-chess-board"></chess-board>
+			
+			<div id="right_area" class="offboard right">
+			
+			</div>
+			
+			<div id="bottom_area" class="offboard bottom">
+				<div id="fen_position_label" class="fen_position">&nbsp;</div>	
+				<div class="moving_pieces_label">
+					<div id="from_square_label">&nbsp;</div>
+					<div id="to_square_label">&nbsp;</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+
+<my-button></my-button>

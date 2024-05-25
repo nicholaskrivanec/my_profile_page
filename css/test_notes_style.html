@@ -1,0 +1,753 @@
+<style id="customstyle">  
+    #toolbar{
+        border-bottom:none;
+    }
+    .filter{
+        border-color:#DBDBDB;
+        border-width:1px;
+        border-top:none;
+        border-bottom:none;
+        padding:3px 2px;
+    }
+    .nav_toolbar_header{
+        border-bottom:1px solid #DBDBDB;
+    }
+    .nav_link_color{
+        background-color:#f2f2f2;
+    }
+    .sub_toolbar_holder{
+        min-width:389px;
+    }
+    .sub_filter_holder{
+        background-color:#FFF;
+        min-width:389px;
+        border-top:1px solid #DBDBDB;
+    }
+    .col_con{
+        padding:0px;
+        height:24px;
+        background-color:#FFF;
+    }
+    .col_btn{
+        width:24px;
+        height:25px;
+        background-repeat:no-repeat;
+        background-position:center;
+        background-size:24px 24px;
+    }
+    .ind_btn{
+        height:25px;
+        width:25px;
+        background-color:white;
+        border-bottom:none;
+    }
+    .sd_btn{
+        float:right;
+        border-right:none;
+        background-size:20px 20px;
+        margin-right: 17px;
+    }
+    .col1{
+        float:none;
+        min-width:140px;
+        margin-left:32px;
+        margin-right:511px;
+        padding:3px 2px 3px 6px;
+        border-bottom:none;
+        border-right:1px solid #DBDBDB;
+    }
+    .col1 input{
+        padding:0px;
+        border:none;
+        width:100%;
+    }
+    .col2{
+        width:116px;
+        float:right;
+    }
+    .col3{
+        width:180px;
+        float:right;
+    }
+    .e[isreadonly="true"], .e[inrow="0"], .e[canedit="N"]{
+        display:none;
+    }
+    .ne, .ne:hover{
+        opacity:0.3;
+        cursor:default;
+        display:none;
+        margin:0px;
+        border:1px solid #fff;
+        background-color:#fff;
+    }
+    .ne[isreadonly="Y"], .ne[inrow="0"], .ne[canedit="N"]{
+        display:inline-block;
+    }
+    .disabled{
+        opacity:0.3;
+    }
+    .outerbox{
+        width:100%;
+        height:100%;
+        overflow-y:scroll;
+        overflow-x:hidden;
+    }
+    .outerbox_print{
+        overflow-y:none;
+        margin:50px;
+    }
+    .innerbox{
+        width:100%;
+        min-height:100%;
+        margin-left:25px;
+        background:#FFF;
+    }
+    .casenote_inner{
+        margin-left:24px;
+        margin-right:24px;
+        background-color:#DBDBDB;
+        cursor:pointer;
+    }
+    .casenote_inner:hover{
+        color:black;
+    }
+    .casenote_inner span{
+        line-height:24px;
+        font-size:13px;
+        padding-left:6px;
+        font-weight:normal;
+    }
+    .note_rec_color{
+        margin-left:1px;
+        padding-left:3px;
+        height:100%;
+    }
+    .note_rec_color2{
+        margin-left:25px;
+        padding-left:3px;
+        height:100%;
+    }
+    .note_rec_inner{
+        height:100%;
+    }
+    .note_rec_innerh{
+        padding:3px 8px;
+        cursor:default;
+        font-weight:bold;
+    }
+    .btn{
+        height:24px;
+        width:24px;
+        background-position:center;
+        background-repeat:no-repeat;
+        background-size:20px 20px;
+    }
+    .btn_print{
+        height:24px;
+        width:24px;
+        background-image:none;
+        background-color:white;
+    }
+    .casenote_left{
+        float:left;
+        background-color:white;
+        padding-left:1px;
+    }
+    .casenote_btn{
+        float:right;
+    }
+    .btn_exp, .btn_col{
+        display:none;
+    }
+    .noedit, .edit, .d_noedit, .d_edit{
+        float:left;
+    }
+    .edit, .noedit[canedit="Y"], .d_edit, .d_noedit[canedit="Y"][inrow="1"]{
+        display:none;
+    }
+    .noedit, .edit[canedit="Y"], .d_noedit, .d_edit[canedit="Y"][inrow="1"]{
+        display:inline-block;
+    }
+    .listrow{
+        margin:0px;
+        width:100%;
+        background:#FFF;
+        padding-bottom: 0px;
+    }
+    .listrow:hover{
+        color:black;
+    }
+    .casenote_group{
+        color:#58595B;
+    }
+    .casenote_group_bborder{
+        padding-top:1px;
+        margin-left:25px;
+    }
+    .casenote_group.casenote_group_end .casenote_group_bborder{
+        background-color:#FFF;
+    }
+    .casenote_group[islast="Y"]{
+        border-bottom:none;
+    }
+    .casenote_group[basestatus="O"][casestatus="C"], 
+    .casenote_group[basestatus="O"][casestatus="I"], 
+    .casenote_group[basestatus="I"][casestatus="C"], 
+    .casenote_group[basestatus="I"][casestatus="S"], 
+    .casenote_group[basestatus="I"][casestatus="O"], 
+    .casenote_group[basestatus="S"][casestatus="I"], 
+    .casenote_group[basestatus="S"][casestatus="C"], 
+    .casenote_group[basestatus="C"][casestatus="O"], 
+    .casenote_group[basestatus="C"][casestatus="S"], 
+    .casenote_group[basestatus="C"][casestatus="I"]{
+        display:none;
+    }
+    .casenote_group_print{
+        color:black;
+    }
+    .casenote_group .data_row .data_row_inner{
+        padding-bottom:4px;
+    }
+    .casenote_info{
+        margin:0px;
+        width:100%;
+        background:#FFF;
+        padding-bottom: 0px;
+    }
+    .casenote_info[islast="Y"]{
+        border-bottom:none;
+    }
+    .casenote_info .nodebuttonopened div.btn_col, .casenote_info .nodebuttonclosed div.btn_exp{
+        display:block;
+        background-color:#DBDBDB;
+    }
+    .no_notes_rec{
+        margin-left:24px;
+        line-height:24px;
+        padding-left:11px;
+    }
+    .data_rec{
+        background:#DBDBDB;
+    }
+    .data_rec_print{
+        background:white;
+    }
+    .data_rec:hover{
+        cursor:pointer;
+    }
+    .casenote_group .no_note{
+        background-color:#DBDBDB;
+    }
+    .c_filter, .sub_filter_holder[filtering="true"] .nc_filter{
+        display:none;
+    }
+    .nc_filter, .sub_filter_holder[filtering="true"] .c_filter{
+        display:block;
+    }
+    .ind{
+        float:left;
+        height:24px;
+        width:24px;
+        background-size:0px 0px;
+    }
+    .ind[selected="true"]{
+        background-size:24px 24px;
+    }
+    .data_row{
+        border:none;
+    //	border-top:2px solid #F2F2F2;
+    //	border-bottom:2px solid #F2F2F2;
+    }
+    .data_row[cid="0"]{
+        display:none;
+    }
+    .data_row_left{
+        padding-left:24px;
+        height:100%;
+        background:white;
+    }
+    .data_row_left[readonly="Y"]{
+        color:gray;
+    }
+    .data_row_inner{
+        height:100%;
+        background-color:#DBDBDB;
+        padding:3px 0px 3px 0px;
+    }
+    .data_row_inner_print{
+        background-color:white;
+        padding:3px 0px 3px 0px;
+    }
+    .data_note{
+        min-width: 300px;
+        margin: 10px 0px;
+        padding: 0px 3px 5px 6px;
+        list-style-type: none;
+    }
+.data_note .source_info {
+    font-family: Helvetica, Arial;
+    font-size: 11px;
+    color: #2d2d7b;
+    padding-left: 5px;
+}
+    .source_info_print{
+        font-family:Helvetica, Arial;
+        font-size:14px;
+        color:#2d2d7b;
+        padding-left:5px;
+    }
+    .d_field{
+        float:right;
+        padding:0px 2px;
+    }
+    .d_field.col2{
+        font-family:Helvetica, Arial;
+        width:126px;
+        font-size:11px;
+        color: #2d2d7b;
+    }
+	.blank_field{
+		font-size:11px;
+		float:none;
+		padding:0px 2px;
+		border:none;
+	}
+    .col2_print{
+        font-family:Helvetica, Arial;
+        width:140px;casenote_group[caseid<JWField @case_id />="<JWField @case_id />"] .data_row[selected="true"]
+        font-size:14px;
+        color: #2d2d7b;
+    }
+    .d_field.col3{
+        font-family:Helvetica, Arial;
+        width:180px;
+        font-size:11px;
+        color: #2d2d7b;
+    }
+    .col3_print{
+        font-family:Helvetica, Arial;
+        width:200px;
+        font-size:14px;
+        color: #2d2d7b;
+    }
+    .d_field.col4{
+        width:66px;
+    }
+    .data_row[selected="true"]{
+        border-color:#DFA943;
+    }
+    .data_row[selected="true"] .data_row_inner{
+        background-color:#FFF;
+    }
+    .no_note{
+        display:none;
+    }
+    .no_note:hover{
+        color:black;
+    }
+    .no_note[readonly="Y"]{
+        color:gray;
+    }
+    .no_note[numrows="0"], .no_note[numrows="1"], .no_note[numrows=""]{
+        display:block;
+    }
+    .note_body{
+        padding-top:0px;
+        padding-left:5px;
+        max-height:100px;
+        overflow-y:auto;
+        -webkit-overflow-scrolling: touch;
+        white-space: pre-wrap;
+        max-width: 95%;
+    }
+    .note_body_print{
+        padding-top:0px;
+        padding-left:5px;
+        max-height:none;
+        padding-bottom:10px;
+        font-size:16px;
+    }
+    .note_body:hover{
+        color:black;
+        cursor:pointer;
+    }
+    /*********Current/All Button*************/
+    .show_all, .show_current[showtype="all"] {
+        display: block;
+    }
+    .show_current, .show_all[showtype="all"] {
+        display: none;
+    }
+    .caseshow[showtype="current"]{
+        display:none;
+    }
+    .ldashow[showtype="current"]{
+        display:none;
+    }
+    <JWRepeat>
+    .casenote_group[caseid<JWField @case_id />="<JWField @case_id />"]{
+        color:black;
+    }
+    .casenote_group[caseid<JWField @case_id />="<JWField @case_id />"] .casenote_info .data_rec{
+        background-color:#F2F2F2;
+    }
+    .casenote_group[caseid<JWField @case_id />="<JWField @case_id />"] .no_note .no_notes_rec{
+        background-color:white;
+    }
+    .casenote_group[caseid<JWField @case_id />="<JWField @case_id />"] .data_row .data_row_inner{
+        padding-bottom:4px;
+        background-color: #f2f2f2;
+        margin-bottom: 1px;
+    }
+    .casenote_group[caseid<JWField @case_id />="<JWField @case_id />"] .data_row[selected="true"] .data_row_inner{
+        background-color: #FFF;
+        padding-bottom: 3px;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+    }
+    .casenote_group[caseid<JWField @case_id />="<JWField @case_id />"] .casenote_info .casenote_inner{
+        background-color:#F2F2F2;
+    }
+    .casenote_group[caseid<JWField @case_id />="<JWField @case_id />"] .note_body:hover{
+        cursor:pointer;
+    }
+    .casenote_group[caseid<JWField @case_id />="<JWField @case_id />"] .casenote_info .nodebuttonopened div.btn_col, .casenote_group[caseid<JWField @case_id />="<JWField @case_id />"] .casenote_info .nodebuttonclosed div.btn_exp{
+        display:block;
+        background-color:#f2f2f2;
+    }
+    .caseshow[showtype="current"][caseid<JWField @case_id />="<JWField @case_id />"]{
+        display:block;
+    }
+    </JWRepeat>
+    @media all and (max-width:960px){
+        .tcol2{
+            display:none;
+        }
+        .col1{
+            margin-right:320px;
+        }
+        .d_field.col2{
+            width:118px;
+        }
+    }
+    @media all and (max-width:830px){
+        .tcol1{
+            display:none;
+        }
+        .col1{
+            margin-right:193px;
+        }
+    }
+    @media all and (max-width:700px){
+        .sd_btn{
+            border-left:none;
+        }
+	.tcol0{
+		display:none;
+	}
+        .col1{
+            min-width:115px;
+            margin-right:66px;
+        }
+    }
+
+.noteFilterTable{
+	width:100%;
+	border:none;
+	border-spacing: 0px;
+}
+
+    </style>
+
+    <div id="toolbar">
+        <div class="nav_toolbar_header">
+            <div style="display:inline-block;float:left;">
+                <div control="dropdown" controlinit="layoutId:5227;">
+                    <div class="half_toolbutton " style="border-bottom: 1px solid #dbdbdb;"subcontrol="dropbutton">
+                        <div  class="toolimage_hb collapsed_menu_icon"></div>
+                        <div class="tooltext"></div>
+                        <div subcontrol="dropinput" type="text" tabindex="99" /></div>
+                    </div>
+                </div>
+                <div class="half_toolbutton" control="navbutton" controlinit="layoutId:5020;type:full;hotkey:ctlshifth" style="clear:both" title="Home (Ctrl+Shift+H)">
+                    <div  class="toolimage_home home_icon"></div>
+                </div>
+            </div>
+            <span class="edit" control="panel" controlinit="attrCacheValue:caseAllowEdit,canedit" canedit="<JWField @base_allow_edit />">
+                <div class="p_toolbutton" control="navbutton" controlinit="layoutId:117778;cacheName:case_id;type:part;refreshOn:refresh">
+                    <input type="hidden" control="textbox" controlinit="fieldName:source_flag" value="<JWField @source_flag />" />
+                    <div class="p_toolimage refresh_icon"></div><div class="p_tooltext">Refresh</div>
+                </div>
+            </span>
+            <span class="noedit" control="panel" controlinit="attrCacheValue:caseAllowEdit,canedit" canedit="<JWField @base_allow_edit />">
+                <div class="p_toolbutton fade_b"><div class="p_toolimage refresh_icon"></div><div class="p_tooltext">Refresh</div></div>
+            </span>
+            <div class="p_toolbutton" control="navbutton" controlinit="layoutId:5067;type:full;layoutStateId:search"><div  class="p_toolimage search_icon"></div><div class="p_tooltext">Search</div></div>
+            <div class="p_toolbutton" style="padding-left:9px;width:52px;" control="funcbutton" controlinit="layoutId:5274;key:0;preNavAction:save">
+                <input type="hidden" control="textbox" controlinit="cacheValue:base_client_id;fieldName:client_id;initFromCache:true;"/>
+                <div class="p_toolimage new_case_icon"></div>
+                <div class="p_tooltext twolines">New Case</div>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+        <div class="nav_toolbar_holder">
+            <div class="sub_toolbar_holder">
+                <div style="display:none" control="actionbutton" controlinit="updateOn:recordselect;postOn:setcasecache;actionData:addnewaction">
+                    <input type="hidden" control="textbox" controlinit="fieldName:case_id;cacheName:case_id" value="<JWField @base_case_id />" />
+                    <input type="hidden" control="basicdata" controlinit="fieldName:case_allow_edit;cacheName:caseAllowEdit" value="<JWField @base_allow_edit />" />
+                    <input type="hidden" control="basicdata" controlinit="fieldName:menuName" value="<JWField @base_case_id />" />
+                    <input type="hidden" control="basicdata" controlinit="fieldName:read_only;cacheName:is_read_only" />
+                    <input type="hidden" control="basicdata" controlinit="fieldName:inRow;cacheName:inRow" value="0" />
+                    <input type="hidden" control="basicdata" controlinit="fieldName:addnewaction" value="addnew<JWField @base_case_id />" />
+		<input type="hidden" control="textbox" controlinit="fieldName:note_id;cacheName:fromNoteId" value="0" />
+                </div>
+    
+                <div class="e" control="panel" controlinit="attrCacheValue:caseAllowEdit,canedit" canedit="<JWField @base_allow_edit />">
+                    <div class="s_toolbutton e" control="funcbutton" controlinit="layoutId:5255;postNavAction:refresh;">
+                        <input type="hidden" control="basicdata" controlinit="fieldName:row_id;cacheValue:case_id" value="<JWField @base_case_id />" />
+                        <input type="hidden" control="basicdata" controlinit="fieldName:table_name" value="client" />
+                        <input type="hidden" control="basicdata" controlinit="fieldName:note_id" value="" />
+                        <div class="s_toolimage add_note_icon"></div><div class="s_tooltext">Add</div>
+                    </div>
+                </div>
+                <div class="s_toolbutton ne" control="actionbutton" controlinit="attrCacheValue:caseAllowEdit,canedit" canedit="<JWField @base_allow_edit />"><div class="s_toolimage add_note_icon"></div><div class="s_tooltext">Add</div></div>
+    
+
+
+
+
+	<span class="e" control="panel" controlinit="attrCacheValue:caseAllowEdit,canedit#inRow,inrow" canedit="<JWField @base_allow_edit />" inrow="0">
+		<div class="s_toolbutton" control="funcbutton" controlinit="layoutId:117777;postNavAction:refresh;">
+			<input type="hidden" control="basicdata" controlinit="fieldName:from_case_id;cacheValue:case_id" value="<JWField @case_id />" />
+			<input type="hidden" control="basicdata" controlinit="fieldName:from_note_id;cacheValue:fromNoteId" value="0" />
+			<input type="hidden" control="basicdata" controlinit="fieldName:single_note_copy;" value="true" />
+			<div class="s_toolimage copy_icon"></div>
+			<div class="s_tooltext">Copy</div>
+		</div>
+	</span>
+
+           <div class="s_toolbutton ne" control="actionbutton" controlinit="attrCacheValue:inRow,inrow" inrow="0"><div class="s_toolimage copy_icon"></div><div class="s_tooltext">Copy</div></div>
+
+
+
+
+
+
+                <div class="s_toolbutton e" control="actionbutton" controlinit="action:edit;attrCacheValue:inRow,inrow" inrow="0"><div class="s_toolimage edit_icon"></div><div class="s_tooltext">Edit</div></div>
+                <div class="s_toolbutton ne" control="actionbutton" controlinit="attrCacheValue:inRow,inrow" inrow="0"><div class="s_toolimage edit_icon"></div><div class="s_tooltext">Edit</div></div>
+    
+                <div class="s_toolbutton e" control="actionbutton" controlinit="action:delete,notesave,refresh;attrCacheValue:is_read_only,isreadonly#caseAllowEdit,canedit#inRow,inrow" inrow="0"><div class="s_toolimage delete_icon"></div><div class="s_tooltext">Delete</div></div>
+                <div class="s_toolbutton ne" control="actionbutton" controlinit="attrCacheValue:is_read_only,isreadonly#caseAllowEdit,canedit#inRow,inrow" inrow="0">
+                    <input type="hidden" control="staticdata" controlinit="fieldName:inRow" value="0" />
+                    <div class="s_toolimage delete_icon"></div>
+                    <div class="s_tooltext">Delete</div>
+                </div>
+    
+                <div class="s_separator"></div>
+    
+                <div class="s_toolbutton show_all" control="actionbutton" controlinit="action:setshowtype;attrCacheValue:showtype,showtype" showtype="all">
+                    <div class="s_toolimage settings_icon"></div>
+                    <div class="s_tooltext">All</div>
+                    <input type="hidden" control="basicdata" controlinit="fieldName:showtype" value="all">
+                </div>
+    
+                <div class="s_toolbutton show_current" control="actionbutton" controlinit="action:setshowtype;attrCacheValue:showtype,showtype" showtype="all">
+                    <div class="s_toolimage settings_icon"></div>
+                    <div class="s_tooltext">Current</div>
+                    <input type="hidden" control="basicdata" controlinit="fieldName:showtype" value="current">
+                </div>
+                
+                <div style="display:none" control="actionbutton" controlinit="updateOn:setshowtype;stateId:caseshowtype">
+                    <input type="hidden" control="basicdata" controlinit="fieldName:showtype;cacheName:showtype" value="all" />
+                </div>
+    
+                <div class="s_toolbutton sn_reopen" control="actionbutton" controlinit="action:openSDlg;updateOn:SDlgOpened,SDlgClosed;stateId:fileStickyDialogBtn;attrCacheValue:FileExcluded,reopen#NoteCount,notecount;allowInitialCall:true">
+                    <input type="hidden" control="basicdata" controlinit="fieldName:stickyDialogKey;cacheName:FileExcluded" Value="" />
+                    <input type="hidden" control="basicdata" controlinit="fieldName:stickyDialogNoteCount;cacheName:NoteCount" Value="" />
+                    <div class="s_toolimage edit_icon"></div>
+                    <div class="s_tooltext">Sticky</div>
+                </div>
+    
+                <div class="s_separator"></div>
+    
+                <JWCond @source_flag EQ 1 >
+    
+                    <div class="s_toolbutton" control="navbutton" controlinit="firstLayoutId:5100;secondLayoutId:5105;firstLayoutKey:<JWField @base_case_id />;secondLayoutKey:<JWField @base_case_id />;stepStateId:search;stepListName:listName;stepType:prev;stepKey:<JWField @step_key />">
+                        <div  class="s_toolimage search_previous_icon"></div>
+                        <div class="s_tooltext" >Prev</div>
+                        <input type="hidden" control="basicdata" controlinit="fieldName:tab_num" value="9" />
+                        <input type="hidden" control="textbox" controlinit="fieldName:source_flag" value="<JWField @source_flag />" />
+                        <input type="hidden" control="textbox" controlinit="fieldName:row_number" value="<JWField @prev_row_number />" />
+                    </div>
+    
+                    <div class="s_toolbutton" control="navbutton" controlinit="firstLayoutId:5100;secondLayoutId:5105;firstLayoutKey:<JWField @base_case_id />;secondLayoutKey:<JWField @base_case_id />;stepStateId:search;stepListName:listName;stepType:next;stepKey:<JWField @step_key />">
+                        <div  class="s_toolimage search_next_icon"></div>
+                        <div class="s_tooltext" >Next</div>
+                        <input type="hidden" control="basicdata" controlinit="fieldName:tab_num" value="9" />
+                        <input type="hidden" control="textbox" controlinit="fieldName:source_flag" value="<JWField @source_flag />" />
+                        <input type="hidden" control="textbox" controlinit="fieldName:row_number" value="<JWField @next_row_number />" />
+                    </div>
+    
+                </JWCond>
+    
+                <div class="s_toolbutton" control="funcbutton" controlinit="layoutId:5304;updateOn:recordselect;">
+                    <input type="hidden" control="basicdata" controlinit="fieldName:note_id" value="" />	
+                    <input type="hidden" control="basicdata" controlinit="fieldName:option_setting" value="note_option" />	
+                    <input type="hidden" control="basicdata" controlinit="fieldName:print_case_id;cacheValue:case_id" value="<JWField @base_case_id />" />
+                    <input type="hidden" control="basicdata" controlinit="fieldName:base_client_id;" value="<JWField @base_client_id />" />	
+                    <div class="s_toolimage print_icon"></div>
+                    <div class="s_tooltext">Print</div>
+                </div>
+    
+                <a href="<JWField @sys_WEB_HELP_URL />/default.htm?notes.htm" target="_blank"><div class="s_toolbutton" style="float:right;"><div class="s_toolimage help_icon"></div><div class="s_tooltext">Help</div></div></a>
+    
+    
+            </div>
+
+            <div class="sub_filter_holder" control="filterrow">
+		<div class="filter col_con col_btn sd_btn shift_down_icon" control="actionbutton" controlinit="action:expandcasenotes"></div>
+		<div class="filter col_con col_btn c_filter reset_icon" style="float:right;" control="actionbutton" controlinit="action:clearfilter"></div>
+		<div class="filter col_con col_btn nc_filter reset_disabled_icon" style="float:right;"></div>
+		<input class="filter col3 tcol2" control="textbox" controlinit="fieldName:filterCreatedBy" placeholder="Created By" />
+		<input class="filter col2 tcol1" control="textbox" controlinit="fieldName:filterCreatedTimestamp" placeholder="Created" />
+		<input class="filter col2 tcol0" control="textbox" controlinit="fieldName:filterNoteDate" placeholder="Note Date" />
+		<div class="filter col_con col_btn ind_btn note_icon"></div>
+		<div class="col1"><input class="filter" style="float:none" control="textbox" controlinit="fieldName:filterNote" placeholder="Notes" /></div>
+		<div style="clear:both;"></div>
+            </div>
+
+            <div style="clear:both;"></div>
+        </div>	
+    </div>
+
+    
+    <div id="main">
+
+
+        <!--<div class="outerbox" control="printbox" controlinit="printOn:printallnotes;reportName:Print Screen - Notes Tab.pdf;printSuffix:_print;">-->
+            <div>
+		<table class="noteFilterTable" >
+			<thead class="sub_filter_holder control="filterrow">
+				<tr >
+					<th class="filter col_con col_btn sd_btn shift_down_icon" control="actionbutton" controlinit="action:expandcasenotes"></th>
+					<th class="filter col_con col_btn c_filter reset_icon" control="actionbutton" controlinit="action:clearfilter"></th>
+					<th class="filter col_con col_btn nc_filter reset_disabled_icon"></th>
+					<th class="filter col3 tcol2"> <input control="textbox" controlinit="fieldName:filterCreatedBy" placeholder="Created By" /></th>
+					<th class="filter col2 tcol1"><input control="textbox" controlinit="fieldName:filterCreatedTimestamp" placeholder="Created" /></th>
+					<th class="filter col2 tcol0" ><input control="textbox" controlinit="fieldName:filterNoteDate" placeholder="Note Date" /></th>
+					<th><div class="filter col_con col_btn ind_btn note_icon"></div></th>
+					<th class="col1"><input class="filter" style="float:none" control="textbox" controlinit="fieldName:filterNote" placeholder="Notes" /></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td></td>
+				</tr>
+
+						<JWCond @is_lda_start EQ 1>
+							<tr class="listrow ldashow case_color_<JWField @case_color /> <JWCond @has_open_cases EQ 1><JWCond @has_closed_cases EQ 1><JWCond @has_inactive_cases EQ 1>nav_file_open_closed</JWCond></JWCond><JWCond @has_closed_cases NEQ 1><JWCond @has_inactive_cases NEQ 1>nav_file_open</JWCond></JWCond></JWCond><JWCond @has_open_cases NEQ 1><JWCond @has_inactive_cases NEQ 1><JWCond @has_closed_cases EQ 1>nav_file_closed</JWCond></JWCond><JWCond @has_closed_cases NEQ 1><JWCond @has_inactive_cases EQ 1>nav_file_inactive</JWCond></JWCond><JWCond @has_inactive_cases EQ 1><JWCond @has_closed_cases EQ 1>nav_file_open_closed</JWCond></JWCond></JWCond>" 
+									control="basicdata" controlinit="attrCacheValue:caseStatusFilter,casestatus#base_case_id,mcaseid<JWField @base_case_id />#showtype,showtype;allowInitialCall:true" showtype="all">
+							</tr>
+						</JWCond>
+			</tbody>
+		</table>
+
+
+
+
+                <JWRepeat>
+                    <JWCond @is_lda_start EQ 1>
+                        <div class="listrow ldashow case_color_<JWField @case_color /> <JWCond @has_open_cases EQ 1><JWCond @has_closed_cases EQ 1><JWCond @has_inactive_cases EQ 1>nav_file_open_closed</JWCond></JWCond><JWCond @has_closed_cases NEQ 1><JWCond @has_inactive_cases NEQ 1>nav_file_open</JWCond></JWCond></JWCond><JWCond @has_open_cases NEQ 1><JWCond @has_inactive_cases NEQ 1><JWCond @has_closed_cases EQ 1>nav_file_closed</JWCond></JWCond><JWCond @has_closed_cases NEQ 1><JWCond @has_inactive_cases EQ 1>nav_file_inactive</JWCond></JWCond><JWCond @has_inactive_cases EQ 1><JWCond @has_closed_cases EQ 1>nav_file_open_closed</JWCond></JWCond></JWCond>" 
+            control="basicdata" controlinit="attrCacheValue:caseStatusFilter,casestatus#base_case_id,mcaseid<JWField @base_case_id />#showtype,showtype;allowInitialCall:true" showtype="all">
+                        </div>
+                    </JWCond>
+                    <div class="casenote_group caseshow <JWCOnd @is_lda_end EQ 1>casenote_group_end</JWCond>" control="basicdata" controlinit="attrCacheValue:case_id,caseid<JWField @case_id />#base_case_id,mcaseid<JWField @base_case_id />#caseStatusFilter,casestatus#showtype,showtype;allowInitialCall:true" showtype="all" basestatus="<JWField @case_open_closed />" <JWCond @is_last EQ 1>islast="Y"</JWCond> <JWCond @is_first EQ 1>isfirst="Y"</JWCond>>
+                        <div class="note_rec_color2 case_color_<JWField @case_color />">
+                            <div class="note_rec_inner note_rec_innerh">
+                                <span><JWCond @lda_nbr EQ null>No Docket Number</JWCond><JWField @lda_nbr /></span>
+                            </div>
+                        </div>
+                        <input type="hidden" control="basicdata" controlinit="fieldName:case_id" value="<JWField @case_id />" />
+                        <input type="hidden" control="basicdata" controlinit="fieldName:is_active" value="<JWField @is_active />" />
+                        <div class="casenote_info" control="treenode" controlinit="expandOn:expandcasenotes,expand<JWField @case_id />;<JWCond @is_active EQ 1>autoexpand:true;</JWCond>" <JWCond @is_last EQ 1>islast="Y"</JWCond>>
+                            <span subcontrol="pic" class="nodepicclosed"></span>
+                            <span subcontrol="text" class="nodetextclosed"></span>
+                            <span subcontrol="button" class="nodebuttonclosed">
+                                <div class="btn casenote_btn btn_exp shift_down_icon"></div>
+                                <div class="btn casenote_btn btn_col shift_up_icon"></div>
+			
+                            </span>
+                            <div class="casenote_left btn"></div>
+                            <div class="note_rec_color case_color_<JWField @case_color />">
+                                <div class="note_rec_inner">
+                                    <div class="casenote_inner" control="actionbutton" controlinit="action:recordselect,navsetmenu,expand<JWField @case_id />;postOn:addnew<JWField @case_id />;skipUpdateOnPost:true">
+                                        <input type="hidden" control="basicdata" controlinit="fieldName:case_id" value="<JWField @case_id />" />
+                                        <input type="hidden" control="basicdata" controlinit="fieldName:menuName" value="<JWField @case_id />" />
+                                        <input type="hidden" control="basicdata" controlinit="fieldName:case_allow_edit;defaultValue:<JWField @allow_edit />" value ="<JWField @allow_edit />" />
+                                        <input type="hidden" control="basicdata" controlinit="fieldName:read_only;defaultValue:<JWField @allow_edit />" value ="<JWField @allow_edit />" />
+                                        <input type="hidden" control="basicdata" controlinit="fieldName:inRow;defaultValue:0" value="0" />
+    
+                                        <span><JWField @case_date /></span>
+                                        <span><JWField @case_type /></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <span subcontrol="body" class="nodebodyclosed">
+                                <div control="actionbutton" controlinit="action:recordselect,navsetmenu;attrCacheValue:rowcount<JWField @case_id />,numrows" class="no_note" <JWCond @allow_edit NEQ Y>readonly="Y"</JWCond>>
+                                    <div class="casenote_left btn"></div>
+                                    <div class="note_rec_color case_color_<JWField @case_color />">
+                                        <div class="note_rec_inner">
+                                            <div class="no_notes_rec data_rec">
+                                                <input type="hidden" control="basicdata" controlinit="fieldName:case_id" value="<JWField @case_id />" />
+                                                <input type="hidden" control="basicdata" controlinit="fieldName:menuName" value="<JWField @case_id />" />
+                                                <input type="hidden" control="basicdata" controlinit="fieldName:case_allow_edit;defaultValue:<JWField @allow_edit />" value ="<JWField @allow_edit />" />
+                                                <input type="hidden" control="basicdata" controlinit="fieldName:read_only;defaultValue:<JWField @allow_edit />" value ="<JWField @allow_edit />" />
+                                                <input type="hidden" control="basicdata" controlinit="fieldName:inRow;defaultValue:0" value="0" />
+                                                <div class="no_notes">No Notes</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div control="recordtable" controlinit="editLayoutId:5255;addRowOnTab:false;canFilter:true;onRecordSelect:recordselect,navsetmenu;selectOn:recordselect,caseselected;selectUsingIds:true;cacheRowCount:rowcount<JWField @case_id />;multiselect:false;askFlag:delete;deleteMsg:Are you sure you want to delete the selected note?">
+                                    <JWRepeat>
+                                        <div class="data_row" control="recordrow">
+                                            <div class="btn ind grey_selection_arrow" subcontrol="indicator"></div>
+                                            <div class="data_row_left nav_link_color" control="record" controlinit="recordType:note;localCache:true;" <JWCond @is_owner NEQ 1>readonly="Y"</JWCond>>
+                                                <div class="note_rec_color case_color_<JWField @case_color />">
+                                                    <div class="note_rec_inner">
+                                                        <input type="hidden" control="textbox" controlinit="fieldName:note_id;cacheName:note_id" value="<JWField @note_id />" />
+                                                        <input type="hidden" control="textbox" controlinit="fieldName:case_id;defaultValue:<JWField @case_id />" value="<JWField @case_id />" />
+                                                        <input type="hidden" control="textbox" controlinit="fieldName:case_allow_edit;defaultValue:<JWField @allow_edit />" value="<JWField @allow_edit />" />
+                                                        <input type="hidden" control="textbox" controlinit="fieldName:read_only;defaultValue:false" value="<JWCond @is_owner EQ 1>false</JWCond><JWCond @is_owner NEQ 1>true</JWCOnd>" />
+                                                        <input type="hidden" control="textbox"  controlinit="fieldName:menuName;defaultValue:<JWField @case_id />" value ="<JWField @case_id />" />
+                                                        <input type="hidden" control="basicdata" controlinit="fieldName:inRow;defaultValue:1" value="1" />
+                                                        <input type="hidden" control="basicdata" controlinit="fieldName:filterNote;" value="<JWField @note_value />" />
+                                                        <input type="hidden" control="basicdata" controlinit="fieldName:filterCreatedBy" value="<JWField @create_name />" />
+                                                        <input type="hidden" control="basicdata" controlinit="fieldName:filterCreatedTimestamp" value="<JWField @create_timestamp format="MM/dd/yyyy hh:mm tt" />" />
+                                                        <input type="hidden" control="basicdata" controlinit="fieldName:filterNoteDate" value="<JWField @note_date format="MM/dd/yyyy hh:mm tt" />" />
+                                                            <div class="data_row_inner case_bcolor_<JWField @case_color />">
+						<div class="d_field col4">&nbsp;</div>
+                                                                <div class="d_field col3 tcol2"><JWField @create_name /></div>
+                                                                <div class="d_field col2 tcol1"><JWField @create_timestamp format="MM/dd/yyyy hh:mm tt" /></div>
+						<div class="d_field col2 tcol0"><JWFIeld @note_date format="MM/dd/yyyy hh:mm tt" /></div>
+                                                               <div class="blank_field col1">&nbsp;</div>
+						<ul class="data_note">
+                                                                    <li class="source_info"><JWField @note_source_detail /></li>
+                                                                    <li class="note_body"><JWField @note_value /></li>
+                                                                </ul>
+                                                            </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </JWRepeat>
+                                </div>
+                            </span>
+                        </div>
+                        <div class="casenote_group_bborder case_color_<JWField @case_color />"></div>
+                    </div>
+                </JWRepeat>
+            </div>
+            <div class="listrow_bborder case_color_<JWField @case_color />"></div>
+        <!--</div>-->
+    </div>

@@ -1,0 +1,195 @@
+html, body{
+    padding:0px;
+    margin:0px;
+    height:100%;
+		user-select: none;
+    overflow:hidden;
+    font-family: "Lucida Sans", Helvetica, Arial, Verdana, sans-serif;
+		-webkit-user-select: none;
+		-webkit-font-smoothing: antialiased;
+}
+body
+{
+  background: #f1f1f1;
+	height:100vh;
+	width:100vw;
+}
+#nk-main{
+	width:calc(100% - 250px);
+	margin-left:250px;
+	overflow:auto;
+	height:100vh;
+}
+.menu_bar 
+{
+	margin-bottom:15px;
+	position:fixed;
+	width:100vw;
+	height:49px;
+  overflow: hidden;
+  background-color: #333;
+  border-bottom: 1px solid lightgrey;
+
+}
+.menu_bar a 
+{
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  padding: 0px 16px;
+  text-decoration: none;
+	border: 1px solid #333;
+	line-height:50px;
+	text-align: center;
+  color: #fff;
+  font-weight: bold;
+}
+.menu_bar a:hover 
+{
+  background-color: #ddd;
+  color: black;
+	border: 1px solid white;
+}
+.left_menu_bar{
+	height:calc(100% - 50px);
+	background-color:#333333;
+	width:250px;
+	float:left;
+	position:fixed;
+	padding: 25px 0px;
+}
+
+.left_menu_bar a {
+	display:block;
+	line-height:50px;
+	height:50px;
+	width:250px;
+	text-align: center;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius:0px 8px 8px 0px;
+}
+.left_menu_bar a:hover{
+	background-color: #4da2cd;
+  color: black;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.l_col 
+{   
+  float: left;
+  width: 75%;
+}
+.r_col 
+{
+  float: left;
+  width: 25%;
+  background-color: #f1f1f1;
+  padding-left: 20px;
+}
+
+img{
+	background-color: #aaa;
+	width: 25%;
+	padding: 20px;
+}
+.fakeimg 
+{
+  background-color: #aaa;
+  width: 100%;
+  padding: 20px;
+}
+
+article 
+{
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+  margin-top: 20px;
+}
+
+
+@media screen and (max-width: 800px) {
+  .l_col, .r_col {   
+    width: 100%;
+    padding: 0;
+  }
+}
+@media screen and (max-width: 400px) {
+  .nav a {
+    float: none;
+    width: 100%;
+  }
+}
+a.active{
+	background-color: #ddd;
+  color: darkblue;
+  border: 1px solid #ddd;
+}
+
+.fixedNavBar::after{
+	content:"";
+	display:block;
+	height:50px;
+	width:1px;
+	clear:both;
+}
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.sprite.chess-logo:before {
+	background-image:url("https://www.chess.com/bundles/web/images/sprites/nav.2a45ec5c@2x.png");
+  background-position: -27px 10px;
+  height: 40px;
+	margin-left:36px;
+  width: 105px;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+.sprite.chess-logo:hover {
+	background-color:#ddd;
+}
+.sprite:before {
+  background: url(/bundles/web/images/sprites/nav.2a45ec5c.png);
+  background-size: 133px auto;
+  content: "";
+  display: block;
+  flex-shrink: 0;
+  margin-right: 12px;
+}
+#plural_sight_link{
+  background-image: url(https://app.pluralsight.com/id/img/login-logo.png);
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 90% auto;
+  position: relative;
+  display: inline-block
+}
+
+.w3schools-logo {
+  font-family: fontawesome;
+  text-decoration: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  letter-spacing: 3px;
+  color: #555555;
+  display: block;
+  position: relative;
+}
+.w3schools-logo .dotcom {
+  color: #4CAF50;
+}

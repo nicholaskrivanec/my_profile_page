@@ -1,0 +1,140 @@
+set transaction isolation level read uncommitted
+
+declare @cc_role_id 			int
+		,@cc_defendant_ind 		varchar(1)
+		,@cc_last_name			varchar(50)
+		,@cc_first_name			varchar(50)
+		,@cc_middle_name		varchar(50)
+		,@cc_dob				datetime
+		,@cc_asof				datetime
+		,@cc_combine_names		varchar(1)  
+		,@genConflictReportId	int
+
+set @cc_combine_names = null
+
+if ('@combine' != 'null')
+	set @cc_combine_names = '@combine'
+if ('@last_name' != 'null')
+	set @cc_last_name = '@last_name'
+if ('@first_name' != 'null')
+	set @cc_first_name = '@first_name'
+if ('@middle_name' != 'null')
+	set @cc_middle_name = '@middle_name'
+
+set @cc_role_id = null
+if (isnumeric('@role') = 1)
+	set @cc_role_id = convert(int,'@role')
+
+set @cc_dob = null
+if (isdate('@dob') = 1)
+	set @cc_dob = convert(datetime,'@dob')
+
+insert into conflict_report(
+	[user_sub_id]
+	,[case_id]
+	,[create_timestamp]
+	,[organization_id]
+	)
+	values
+	(@user_sub_id
+	,@key
+	,getdate()
+	,@user_organization_id
+	)
+
+select @genConflictReportId = scope_identity()
+
+insert into conflict_report_client(
+	[conflict_report_id]
+	,[client_id]
+	,[person_descr]
+	,[first_name]
+	,[last_name]
+	,[middle_name]
+	,[dob]
+	,[role_code]
+	,[create_timestamp]
+	,[organization_id])
+
+	select
+		@genConflictReportId
+		,cl.client_id
+		,'Client'
+		,cl.CIN_First
+		,cl.CIN_Last
+		,cl.CIN_Middle
+		,convert(datetime,c.dob,101)
+		,'Client'
+		,getdate()
+		,@user_organization_id 
+	from 
+		cases c
+	left join 
+		client cl on cl.client_id = c.client_id and c.case_id = @key
+	where(cl.CIN_First is not null or cl.CIN_last is not null or cl.CIN_middle is not null)
+
+	union
+
+	select
+		@genConflictReportId
+		,cl.client_id
+		,r.role_descr
+		,cl.first_name
+		,cl.last_name
+		,cl.middle_name
+		,convert(datetime,cl.dob,101)
+		,r.role_code
+		,getdate()
+		,@user_organization_id 
+	from 
+		related_person rp 
+	left join 
+		client cl on rp.client_id = cl.client_id 
+	left join 
+		role r on r.role_id = cl.role_id 
+	where
+		rp.case_id = @key
+	and 
+		(r.staff_flag = 'N' or r.staff_flag is null)
+	and
+		(cl.first_name is not null or cl.last_name is not null or cl.middle_name is not null)
+	and 
+		(cl.first_name <> 'NONE')
+
+
+	union 
+
+	select
+		@genConflictReportId
+		,cl.client_id
+		,'Client'
+		,c.first_name
+		,c.last_name
+		,c.middle_name
+		,convert(datetime,c.dob,101)
+		,'Client'
+		,getdate()
+		,@user_organization_id 
+	from 
+		cases c
+	inner join 
+		client cl on cl.client_id = c.client_id and c.case_id = @key
+	where
+		(c.first_name is not null or c.last_name is not null or c.middle_name is not null)
+
+
+select
+	conflict_report_id
+	,client_id
+	,person_descr
+	,first_name
+	,last_name
+	,middle_name
+	,convert(datetime,dob,101) dob
+	,role_code
+	,create_timestamp
+	,organization_id
+from 
+	conflict_report_client
+where
+	conflict_report_id = @genConflictReportId

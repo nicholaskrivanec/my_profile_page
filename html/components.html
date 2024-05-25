@@ -1,0 +1,42 @@
+<!doctype html>
+
+<html>
+	<head is="nk-head" id="components">
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+		<script src="../js/main.js"></script>
+	</head>
+ 
+  <body>
+		<menu-bar></menu-bar>
+		<left-menu-bar></left-menu-bar>
+		<div id="nk-main" ng-app="nkMain">
+			<div id="templateButton">
+				<div style="display:inline-block;"><p>Click Button To Create a Copy</p></div>
+				
+				<template><p>This <span class="adjective"></span> template has been copied <span class="number-of-copies"></span> times.</p></template>
+
+				<button style="display:inline-block;margin-left:10px;" onclick="copyTemplate()">Copy Template</button>
+			</div>
+			
+			<div id="extendingCustomElements">
+			</div>
+				
+			<div id="creatingAShadowDOM">
+				<div id="host"></div>
+			</div>
+			
+			<div id="clock">
+				<time-formatted style="margin-right:10px;"></time-formatted>
+				<live-timer></live-timer>
+			</div>
+			
+			<div class="dropdown">
+				<jw-control control="monthyeardropdown"></jw-control>
+			</div>
+			
+			<sign-in-dialog></sign-in-dialog>
+		</div>
+  </body>
+</html>
+
+

@@ -1,0 +1,145 @@
+html, body{
+    padding:0px;
+    margin:0px;
+    height:100%;
+	width:100%;
+    min-width:700px;
+		user-select: none;
+    overflow:hidden;
+    font-family: "Lucida Sans", Helvetica, Arial, Verdana, sans-serif;
+		-webkit-user-select: none;
+		-webkit-font-smoothing: antialiased;
+}
+body{
+	background-image:url('./image/chess_pieces/woodBackground.jpg');
+}
+#nk_main{
+	margin:auto;
+}
+.board{
+	display:inline-block;
+	min-width:250px;
+	min-height:250px;
+	height:70vh;
+	width:70vh;
+	padding:0px;
+}
+table{
+	border-spacing:0px;
+	padding:0px;
+	border-collapse: collapse;
+}
+.rank_name, .file_names td div{
+	font-size: 20px;
+	font-family: Comic Sans MS, Harrington, Arial;
+	text-align: center;
+}
+.rank_name{
+	width:30px;
+}
+/* .file_names td div{
+	height: 30px;
+	vertical-align: top;
+	padding:0px;
+} */
+
+.l .considered{
+	background-color: #dbc69d;
+}
+.d .considered{
+	background-color:#565080;
+}
+.l{
+	background-color:#ffefd5;
+}
+.d{
+	background-color:#44786b;
+}
+
+
+
+.square[selected]{
+	background-color:green;
+}
+.offboard.top{
+	clear:both;
+	height:96px;
+	width:70vh;
+	padding-left:98px;
+	padding-right:98px;
+	display:block;
+	border:solid 2px blue;
+
+}
+.offboard.bottom{
+	clear:both;
+	height:96px;
+	width:70vh;
+	padding-left:98px;
+	padding-right:98px;
+	display:block;
+	border:solid 2px blue;
+
+}
+.offboard.left{
+	width:96px;
+	height:70vh;
+	float:left;
+	border: solid 2px yellow;
+
+}
+.offboard.right{
+	width:96px;
+	height:70vh;
+	float:left;
+	border: solid 2px rgb(232, 112, 232);
+
+}
+.board{
+	float:left;
+	height:70vh;
+	width:70vh;
+}
+.left, .right, .bottom, .top{
+	position:relative;
+}
+td{
+	padding:0px !important;
+}
+img {
+	width:100%;
+	height:100%;
+	padding:0px;
+	margin:0px;
+	background-repeat: no-repeat;
+	background-color:transparent;
+	background-position: center;
+	border-collapse:collapse;
+	border-spacing: 0px;
+}
+.board .square{
+
+	height:8.75vh;
+	width:8.75vh;
+	margin:0px;
+	padding:0px;
+}
+#from_square_label, #to_square_label, .arrow_right{
+	font-size:14pt;
+	font-weight:bold;
+	color: white;
+	display:inline-block;
+}
+.moving_pieces_label, .fen_position{
+	position:absolute;
+	top:50px;
+	left:25px;
+}
+
+.fen_position{
+	font-size:14pt;
+	font-weight:bold;
+	color:white;
+	display:inline-block;
+}
+

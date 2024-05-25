@@ -1,0 +1,87 @@
+.user_dialog{
+	background-color: #FFF;
+  margin: 10px;
+  width: 300px;
+  text-align: center;
+}
+.dialog_title{
+	text-align:left;
+	padding:2px 5px;
+	text-align: left;
+  padding: 2px 5px;
+  background-color: #d3d3d3;
+  font-weight: bold;
+  height: 20px;
+	line-height:20px;
+	border-bottom: solid 1px lightgray;
+}
+.dialog_field_area{
+	padding: 15px 0px;
+}
+.inline_label_field .user_label{
+	float:left;
+	line-height: 25px;
+	width:70px;
+}
+.arrowContainer{
+	width: 1700px;
+}
+.inline_label_field{
+	height:25px;
+	padding:0px 15px;
+	margin-top:2px;
+	clear:both;
+}
+.dialog_control_bar{
+	height:30px;
+	border-top: solid 1px lightgray;
+	clear:both;
+}
+.dialog_control_bar .dialog_option_1, 
+.dialog_control_bar .dialog_option_2,
+.dialog_control_bar .dialog_option_3,
+.dialog_control_bar .dialog_option_4,
+.dialog_control_bar .dialog_option_5,
+.dialog_control_bar .dialog_commit_option{
+	display:inline-block;
+	height:25px;
+	min-width:40px;
+	text-align:center;
+	border-top: solid 1px lightgray;
+	margin-top:-1px;
+	padding:4px 10px;
+}
+
+.dialog_control_bar div a{
+	text-decoration:none;
+}
+.dialog_control_bar div:hover a{
+	text-decoration:underline;
+}
+.dialog_control_bar .dialog_option_1:hover, 
+.dialog_control_bar .dialog_option_2:hover,
+.dialog_control_bar .dialog_option_3:hover,
+.dialog_control_bar .dialog_option_4:hover,
+.dialog_control_bar .dialog_option_5:hover,
+.dialog_control_bar .dialog_commit_option:hover{
+	border-top: solid 1px blue;
+	background-color: beige;
+	cursor: pointer;
+}
+
+.dialog_control_bar .dialog_commit_option{
+	float:right;
+}
+
+.random_arrow_btn{
+	background-color:papayawhip;
+	font-size : 24px;
+	vertical-align:middle;
+	color:darkblue;
+
+	width:32px;
+	height:32px;
+	border-radius:50%;
+	line-height:30px;
+	padding:0px;
+}
